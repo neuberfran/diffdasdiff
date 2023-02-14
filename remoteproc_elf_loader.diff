@@ -1,0 +1,13 @@
+diff --git a/drivers/remoteproc/remoteproc_elf_loader.c b/drivers/remoteproc/remoteproc_elf_loader.c
+index 92741a5..c31ab6b 100644
+--- a/drivers/remoteproc/remoteproc_elf_loader.c
++++ b/drivers/remoteproc/remoteproc_elf_loader.c
+@@ -153,7 +153,7 @@ int rproc_elf_load_segments(struct rproc *rproc, const struct firmware *fw)
+ 		u32 offset = phdr->p_offset;
+ 		void *ptr;
+ 
+-		if (phdr->p_type != PT_LOAD)
++		if (phdr->p_type != PT_LOAD || !filesz)
+ 			continue;
+ 
+ 		dev_dbg(dev, "phdr: type %d da 0x%x memsz 0x%x filesz 0x%x\n",
